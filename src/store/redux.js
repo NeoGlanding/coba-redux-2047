@@ -6,19 +6,15 @@ const stateAwal = {
 
 const reducer = (state = stateAwal, action) => {
     if (action.type === 'INCREMENT_1') {
-        let index = state.counter.findIndex(el => el.id === action.payload.id);
-        let counterCopy = [...state.counter];
-        counterCopy[index] = {...counterCopy[index], angka: counterCopy[index].angka + action.payload.angkaYangDitambahkan}
-
-        return {
-            counter: counterCopy
-        }
     }
 
     if (action.type === 'INCREMENT_2') {
+        let copyCounter = [...state.counter];
+        let index = state.counter.findIndex(el => el.id === action.payload.id);
+        copyCounter[index] = {...copyCounter[index], angka: copyCounter[index].angka + action.payload.angka};
+
         return {
-            ...state,
-            counter2: state.counter2 + 1
+            counter: copyCounter
         }
     }
 
