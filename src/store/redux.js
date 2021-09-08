@@ -1,15 +1,17 @@
 import { createStore } from 'redux';
 
 const stateAwal = {
-    counter1: 1,
-    counter2: 1
+    counter: [{id: 2 ,angka: 1}, {id: 1, angka: 2}]
 }
 
 const reducer = (state = stateAwal, action) => {
     if (action.type === 'INCREMENT_1') {
+        let index = state.counter.findIndex(el => el.id === action.payload.id);
+        let counterCopy = [...state.counter];
+        counterCopy[index] = {...counterCopy[index], angka: counterCopy[index].angka + action.payload.angkaYangDitambahkan}
+
         return {
-            ...state,
-            counter1: state.counter1 + 1,
+            counter: counterCopy
         }
     }
 
