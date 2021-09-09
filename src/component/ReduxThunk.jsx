@@ -7,8 +7,6 @@ const ReduxThunk = props => {
     const state = useSelector(st => st.data);
     const dispatch = useDispatch();
 
-    console.log(state)
-
     useEffect(() => {
         dispatch(getApi());
     }, [])
